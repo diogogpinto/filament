@@ -26,4 +26,12 @@ class Topbar extends Component implements HasActions, HasSchemas
     {
         return view('filament-panels::livewire.topbar');
     }
+
+    /**
+     * @return array<string>
+     */
+    public function getRenderHookScopes(): array
+    {
+        return [get_class(request()->route()->controller ?? '')];
+    }
 }

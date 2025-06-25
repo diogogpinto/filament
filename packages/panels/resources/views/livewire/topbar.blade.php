@@ -10,7 +10,7 @@
     @endphp
 
     <nav class="fi-topbar">
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_START) }}
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_START, scopes: $this->getRenderHookScopes()) }}
 
         @if ($hasNavigation)
             <x-filament::icon-button
@@ -209,13 +209,13 @@
             @endif
             class="fi-topbar-end"
         >
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE) }}
+            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE, scopes: $this->getRenderHookScopes()) }}
 
             @if (filament()->isGlobalSearchEnabled())
                 @livewire(Filament\Livewire\GlobalSearch::class)
             @endif
 
-            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER) }}
+            {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER, scopes: $this->getRenderHookScopes()) }}
 
             @if (filament()->auth()->check())
                 @if (filament()->hasDatabaseNotifications())
@@ -230,7 +230,7 @@
             @endif
         </div>
 
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_END) }}
+        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::TOPBAR_END, scopes: $this->getRenderHookScopes()) }}
     </nav>
 
     <x-filament-actions::modals />
